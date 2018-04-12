@@ -48,11 +48,12 @@ var app = app || {};
         acc.push(current);
       } return acc;
     },[])
-  }; 
+  };
 
   Article.numWordsByAuthor = () => {
-    return Article.allAuthors().map(author => {})
+    return Article.allAuthors().map(author => {}).reduce()
   };
+
 
   Article.truncateTable = callback => {
     $.ajax({
