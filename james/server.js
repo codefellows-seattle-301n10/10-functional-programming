@@ -1,12 +1,15 @@
 'use strict';
 // REVIEW: Check out all of our new arrow function syntax!
+function pol (){
+  console.log('im alive')
+};
 
 const pg = require('pg');
 const fs = require('fs');
 const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const conString = '';
+const conString = 'postgres://postgres:aduro19@localhost:5432/james';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => {
