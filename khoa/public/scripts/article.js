@@ -19,13 +19,6 @@ var app = app || {};
     return template(this);
   };
 
-  Article.prototype.toAdmin - function () {
-    var template = Handlebars.compile($('#admin-template').text());
-
-    return template()
-
-  }
-
   Article.loadAll = articleData => {
     articleData.sort((a, b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)))
 
@@ -50,17 +43,14 @@ var app = app || {};
 
 
   Article.allAuthors = () => {
-    app.Article.all.map(article => article.author).reduce((acc, cur) => {
+    return app.Article.all.map(article => article.author).reduce((acc, cur) => {
       if (!acc.includes(cur)) acc.push(cur)
       return acc
     }, []);
   };
 
   Article.numWordsByAuthor = () => {
-    app.Article.all.map(article => article.author).reduce((acc, cur) => {
-      if (!acc.includes(cur)) acc.push(cur)
-      return acc
-    }, []).map(author => {
+    return Article.allAuthors().map(author => {
       let article = {
         'author': author,
         'words': app.Article.all.filter(article => article.author === author).map(article => article.body.split(' ').length).reduce((acc, cur) => acc + cur, 0),
