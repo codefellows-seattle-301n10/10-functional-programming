@@ -39,12 +39,16 @@ var app = app || {};
   };
 
   Article.numWordsAll = () => {
-    return Article.all.map().reduce()
+    return Article.all.map((words, i) => Article.all[i].body.split(' ').length).reduce((acc, current) => acc + current)
   };
 
   Article.allAuthors = () => {
-    return Article.all.map().reduce();
-  };
+    return Article.all.map((author, i) => Article.all[i].author).reduce((acc, current) => {
+      if(acc.indexOf(current)===-1){
+        acc.push(current);
+      } return acc;
+    },[])
+  }; 
 
   Article.numWordsByAuthor = () => {
     return Article.allAuthors().map(author => {})
