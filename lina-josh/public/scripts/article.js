@@ -47,32 +47,30 @@ var app = app || {};
   Article.numWordsAll = () => {
     return Article.all
       .map(art => art.body.split(' ').length)
-      .reduce((sum, num) => sum + num)
+      .reduce((acc, curr) => acc + curr)
   };
 
   Article.allAuthors = () => {
     return Article.all
-      .map(art => art.author)
-      .reduce((uniqueNames, author) => {
-        if(!uniqueNames.includes(author)) {
-          uniqueNames.push(author);
-        }
-        return uniqueNames;
-      }, []);
+      .map((author, i) => Article.all[i].author)
+      .reduce((acc, curr) => {
+        if(!acc.includes(curr)){
+          acc.push(curr);
+        } return acc;
+      },[])
   };
 
   //to get num words just for a given author
   Article.numWordsByAuthor = () => {
     return Article.allAuthors().map(author => {
-      //{ author: "Jane Doe", totalWords: 456}
       return {
         author,
-        //object where key is same to valriable just write author instead of author : author
-        totalWords : Article.app
-          .filter(article => article.author === author)
+        totalWords : Article.all
+          .filter(article =>article.author === author)
           .map(art => art.body.split(' ').length)
-          .reduce((sum, num) => sum + num)
+          .reduce((acc, curr) => acc + curr)
       }
+
     })
   };
 
