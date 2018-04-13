@@ -1,5 +1,7 @@
 'use strict';
 var app = app || {};
+(function(module){
+
 
 var articleView = {};
 
@@ -140,3 +142,7 @@ articleView.initAdminPage = () => {
   $('#blog-stats .articles').text(app.Article.all.length);
   $('#blog-stats .words').text(app.Article.numWordsAll());
 };
+
+  module.articleView = articleView;
+  
+})(app)
