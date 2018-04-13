@@ -1,21 +1,30 @@
-# Project Name
+# Lab 10 - Functional Programming
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number up if you make more commits past your first submission)
+**Author**: Haley Mendoza
+**Version**: 1.0.0 
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+Blog page that stores articles in database so that they are available for users from external source. Utilizes SQL queries to interact with database that contains two tables. Uses main index page as well as a new page that allows users to add articles to blog. Now has an admin page to display blog stats. 
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Clone down repo. Install express and pg. Install nodemon (if needed) Run app using nodemon. 
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+Languages: HTML5, CSS3, Javascript, SQL
+Libraries: jquery
+Pacakages: node, express, pg
+Technologies: Mac OS, Git, GitHub, nodemon
+Database system: PostgreSQL
+
 
 ## Change Log
-<!-- Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
-
+  ### 04-07-18
+  1. First, added handlebars template to admin page. 
+  2. Then, compled fetchAll method and loadAll methods to load articles. 
+  3. Then, wrapped scrips in IIFEs and exported module objects. Also, called fetchAll in html pages. 
+  4. Then, updated admin template to be more in-line with mockup.
+  5. Then, copleted remaining methods for total articles, total words, and other author stats for admin page. 
+  
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Code Fellows 301 n10 instructional team and TA
