@@ -2,6 +2,7 @@
 var app = app || {};
 
 (function(module) {  
+  
   function Article(rawDataObj) {
     // REVIEW: In Lab 8, we explored a lot of new functionality going on here. Let's re-examine the concept of context. Normally, "this" inside of a constructor function refers to the newly instantiated object. However, in the function we're passing to forEach, "this" would normally refer to "undefined" in strict mode. As a result, we had to pass a second argument to forEach to make sure our "this" was still referring to our instantiated object. One of the primary purposes of lexical arrow functions, besides cleaning up syntax to use fewer lines of code, is to also preserve context. That means that when you declare a function using lexical arrows, "this" inside the function will still be the same "this" as it was outside the function. As a result, we no longer have to pass in the optional "this" argument to forEach!
 
@@ -25,8 +26,8 @@ var app = app || {};
 
     // OLD forEach():
     // articleData.forEach(articleObject => Article.all.push(new Article(articleObject)));
-    articleData.map(articleObject => Article.all.push(new Article(articleObject)));
-
+    
+    Article.all = articleData.map(articleObject => new Article(articleObject));
   };
 
   Article.fetchAll = callback => {
@@ -40,15 +41,33 @@ var app = app || {};
 
   // Here's our work to do!!!!################################################################
   Article.numWordsAll = () => { // Calculate all words forever
-    return Article.all.map().reduce()
+    return Article.all
+      .map(art => art.body.split(' ').length)
+      .reduce((acc, cur) => acc + cur)
   };
 
   Article.allAuthors = () => { // Calculate total articles
-    return Article.all.map().reduce();
+    return Article.all
+      .map(art => art.author)
+      .reduce((uniqueNames, author) => {
+        if(uniqueNames.includes(author)) {
+          uniqueNames.push(author);
+        }
+        return uniqueNames;
+      }, []);
   };
 
   Article.numWordsByAuthor = () => { // Calculate total words for each author
-    return Article.allAuthors().map(author => {})
+    return Article.allAuthors().map(author => {
+
+      return {
+        author, // This sets the key AND value as the same
+        totalWords : Article.all
+          .filter(article => article.author === author)
+          .map(art => art.body.split(' ').length)
+          .reduce((acc, cur) => acc + cur)
+      }
+    })
   };
 
   //  #######################################################################################
@@ -98,5 +117,7 @@ var app = app || {};
       .then(console.log)
       .then(callback);
   };
+
   module.Article = Article;
+
 })(app);
