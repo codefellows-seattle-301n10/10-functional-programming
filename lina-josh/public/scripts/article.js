@@ -39,21 +39,33 @@ var app = app || {};
   };
 
   Article.numWordsAll = () => {
-    return Article.all.map((words, i) => Article.all[i].body.split(' ').length).reduce((acc, current) => acc + current)
+    return Article.all
+      .map(art => art.body.split(' ').length)
+      .reduce((acc, curr) => acc + curr)
   };
 
   Article.allAuthors = () => {
-    return Article.all.map((author, i) => Article.all[i].author).reduce((acc, current) => {
-      if(acc.indexOf(current)===-1){
-        acc.push(current);
-      } return acc;
-    },[])
+    return Article.all
+      .map((author, i) => Article.all[i].author)
+      .reduce((acc, curr) => {
+        if(!acc.includes(curr)){
+          acc.push(curr);
+        } return acc;
+      },[])
   };
 
   Article.numWordsByAuthor = () => {
-    return Article.allAuthors().map(author => {}).reduce()
-  };
+    return Article.allAuthors().map(author => {
+      return {
+        author,
+        totalWords : Article.all
+          .filter(article =>article.author === author)
+          .map(art => art.body.split(' ').length)
+          .reduce((acc, curr) => acc + curr)
+      }
 
+    })
+  };
 
   Article.truncateTable = callback => {
     $.ajax({
