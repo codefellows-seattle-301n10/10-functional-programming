@@ -2,6 +2,7 @@
 var app = app || {};
 
 (function (module) {
+  //app after line 2 equals or value of app is an empty object because it doesn't exist. articleViw got loaded after line 2 runs is going to grab app IFFEs allow getting functional scope around a bunch of stuff
   var articleView = {};
   articleView.populateFilters = () => {
     $('article').each(function() {
@@ -89,7 +90,7 @@ var app = app || {};
     var article;
     $('#articles').empty();
 
-    article = new Article({
+    article = new app.Article({
       title: $('#article-title').val(),
       author: $('#article-author').val(),
       authorUrl: $('#article-author-url').val(),
@@ -104,7 +105,7 @@ var app = app || {};
 
   articleView.submit = event => {
     event.preventDefault();
-    let article = new Article({
+    let article = new app.Article({
       title: $('#article-title').val(),
       author: $('#article-author').val(),
       authorUrl: $('#article-author-url').val(),
@@ -132,13 +133,16 @@ var app = app || {};
 
   articleView.initAdminPage = () => {
 
-  // REVIEW: We use .forEach() here because we are relying on the side-effects of the callback function: appending to the DOM. The callback is not required to return anything.
+    const template = Handlebars.compile($('#stats-template').text());
+
+    //get a templating function from handlebars using the markup we added and render the info
+    // REVIEW: We use .forEach() here because we are relying on the side-effects of the callback function: appending to the DOM. The callback is not required to return anything.
     app.Article.numWordsByAuthor().forEach(stat => $('.author-stats').append(template(stat)));
 
     // REVIEW: Simply write the correct values to the page:
     $('#blog-stats .articles').text(app.Article.all.length);
     $('#blog-stats .words').text(app.Article.numWordsAll());
   };
-
+  //export
   module.articleView = articleView;
 })(app)

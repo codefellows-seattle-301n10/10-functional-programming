@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
-    <script id="article-template" type="text/x-handlebars-template">
-      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+    <script id="stats-template" type="text/x-handlebars-template">
+      <li><b>{{author}}</b>: {{totalWords}} words written</li>
+      <!-- <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
           <h1>{{title}}</h1>
           <div class="byline">
@@ -22,7 +23,7 @@
         </header>
         <section class="article-body">{{{body}}}</section>
         <a href="#" class="read-on">Read on &rarr;</a>
-      </article>
+      </article> -->
     </script>
   </head>
 
@@ -64,7 +65,6 @@
     <script src="scripts/articleView.js"></script>
     <script>
       app.Article.fetchAll(app.articleView.initAdminPage);
-      // articleView.initAdminPage();
     </script>
   </body>
 </html>
