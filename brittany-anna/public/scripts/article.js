@@ -57,8 +57,9 @@ var app = app || {};
         authorName: author,
         numWords: Article.all.filter(authNum => authNum.author === author).map(authNum => authNum.body.split(' ').length).reduce((acc, curr) => acc + curr)
       }
-    });
-  };
+    })
+  }
+
 
   Article.truncateTable = callback => {
     $.ajax({
