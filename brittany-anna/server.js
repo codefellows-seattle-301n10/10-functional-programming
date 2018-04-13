@@ -1,5 +1,5 @@
 'use strict';
-// REVIEW: Check out all of our new arrow function syntax!
+// REVIEWED: Check out all of our new arrow function syntax!
 
 const pg = require('pg');
 const fs = require('fs');
@@ -7,8 +7,8 @@ const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://postgres:y7t6r5E@localhost:5432/lab10';
-// const conString = 'postgres://localhost:5432/lab10';
+// const conString = 'postgres://postgres:y7t6r5E@localhost:5432/lab10';
+const conString = 'postgres://localhost:5432/lab10';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => {
