@@ -48,13 +48,18 @@ var app = app || {};
         acc.push(current);
       } return acc;
     },[])
-  }; 
+  };
 
 
   Article.numWordsByAuthor = () => {
     return Article.allAuthors().map(author => {
+      return {
+        authorName: author,
+        numWords: Article.all.filter(authNum => authNum.author === author).map(authNum => authNum.body.split(' ').length).reduce((acc, curr) => acc + curr)
+      }
     })
-  };
+  }
+
 
   
   Article.truncateTable = callback => {
