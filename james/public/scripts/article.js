@@ -27,6 +27,8 @@ Article.loadAll = articleData => {
   articleData.forEach(articleObject => Article.all.push(new Article(articleObject)));
   */
 
+  Article.all = articleData.map(articleObject => new Article(articleObject));
+
 };
 
 Article.fetchAll = callback => {
@@ -38,15 +40,30 @@ Article.fetchAll = callback => {
 };
 
 Article.numWordsAll = () => {
-  return Article.all.map().reduce()
+  return Article.all.map(art => art.body.split(' ').length)
+  .reduce((sum, number) => sum + number)
 };
 
 Article.allAuthors = () => {
-  return Article.all.map().reduce();
+  return Article.all.map(art => art.author)
+  .reduce((authorNames, author) => {
+    if(!authorNames.includes(author)){
+      authorNames.push(author);
+    }
+    return authorNames;
+  }, []);
 };
 
 Article.numWordsByAuthor = () => {
-  return Article.allAuthors().map(author => {})
+  return Article.allAuthors().map(author => {
+    return {
+      author,
+      totalWords : Article.all
+      .filter(article => article.author === author)
+      .map(art => art.body.split(' ').length)
+      .reduce((sum, number) => sum + number)
+    }
+  })
 };
 
 Article.truncateTable = callback => {
