@@ -1,11 +1,11 @@
 'use strict';
 var app = app || {};
+
+
 (function(module){
 
-
-var articleView = {};
-
-articleView.populateFilters = () => {
+  var articleView = {};
+  articleView.populateFilters = () => {
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
       var val = $(this).find('address a').text();
@@ -106,7 +106,7 @@ articleView.create = () => {
 
 articleView.submit = event => {
   event.preventDefault();
-  let article = new Article({
+  let article = new app.Article({
     title: $('#article-title').val(),
     author: $('#article-author').val(),
     authorUrl: $('#article-author-url').val(),
