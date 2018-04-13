@@ -16,7 +16,7 @@
         <header>
           <h1>{{title}}</h1>
           <div class="byline">
-            Author <address><a href="{{authorUrl}}">{{author}}</a></address><p> wrote {{totalWords}} words.</p>
+            Author <address><a href="{{authorUrl}}">{{author}}</a></address> wrote {{totalWords}} words.
           </div>
         </header>
       </article>
@@ -61,7 +61,6 @@
     <script src="scripts/articleView.js"></script>
     <script>
       app.Article.fetchAll(app.articleView.initAdminPage);
-      // articleView.initAdminPage();
     </script>
   </body>
 </html>
