@@ -79,6 +79,8 @@ var app = app || {};
       .then(callback);
   };
 
+  
+
   Article.prototype.updateRecord = function(callback) {
     $.ajax({
       url: `/articles/${this.article_id}`,
@@ -97,4 +99,4 @@ var app = app || {};
       .then(callback);
   };
   module.Article = Article;
-})(window);
+})(app);
