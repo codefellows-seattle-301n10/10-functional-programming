@@ -134,7 +134,7 @@ var app = app || {};
 
   articleView.initAdminPage = () => {
     
-    const template = Handlebars.compile($('#admin-template').text());
+    const template = Handlebars.compile($('#stats-template').text());
 
 
     // REVIEW: We use .forEach() here because we are relying on the side-effects of the callback function: appending to the DOM. The callback is not required to return anything.
