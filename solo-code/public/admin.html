@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
-    <script id="neighborhood-template" type="text/x-handlebars-template">
+    <script id="author-stats-template" type="text/x-handlebars-template">
       <div>
         <h2>{{author}}</h2>
         <p>Word count: {{words}}</p>
@@ -54,7 +54,7 @@
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-      Article.fetchAll();
+      Article.fetchAll(ArticleView.initAdminPage);
     </script>
   </body>
 </html>

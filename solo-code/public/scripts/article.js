@@ -1,5 +1,6 @@
 'use strict';
 var app = app || {};
+var article = {};
 
 (function(module) {
 
@@ -96,6 +97,6 @@ var app = app || {};
       .then(callback);
   };
 
-  module.Article = Article;
+  module.article = article;
 
 });(app)

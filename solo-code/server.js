@@ -6,7 +6,7 @@ const fs = require('fs');
 const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const conString = 'postgres://postgres:82469173@localhost:5432';
+const conString = 'postgres://postgres:82469173@localhost:5432/lab_10';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => {
